@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <title>Кассета юности - ваш личный фотограф и покорный слуга</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400&display=swap"
+    rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet" type="text/css">
+  <style>
+    .hero {
+      height: 75vh;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 5rem;
+      background: linear-gradient(rgba(5, 5, 5, 0.2), rgba(5, 5, 5, 1));
+    }
+
+    .display-hero {
+      font-size:  8rem;
+      line-height: 0.9;
+      margin-bottom: 1rem;
+    }
+
+
+    .btn-outline-custom {
+      border: 1px solid var(--text);
+      color: var(--text);
+      border-radius: 50px;
+      padding: 12px 32px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-outline-custom:hover {
+      background-color: var(--text);
+      color: var(--bg);
+    }
+
+
+    .service-row {
+      border-top: 1px solid #222;
+      padding: 3rem 0;
+      transition: background 0.3s;
+      cursor: default;
+    }
+
+    .service-row:hover {
+      background-color: #0f0f0f;
+    }
+
+    .service-number {
+      font-family: 'Syne', sans-serif;
+      color: var(--accent);
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <nav class="navbar navbar-expand-lg fade-up">
+      <a class="navbar-brand brand-font text-white fs-4" href="index.html">Кассета юности</a>
+      <button class="navbar-toggler border-0 filter-invert" type="button" data-bs-toggle="collapse"
+        data-bs-target="#mainMenu">
+        <span class="navbar-toggler-icon navbar-toggler-icon-inverted"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-4">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Главная</a></li>
+          <li class="nav-item"><a class="nav-link" href="workflow.html">Процесс</a></li>
+          <li class="nav-item"><a class="nav-link" href="portfolio.html">Работы</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <header class="hero fade-up delay-1">
+    <div class="container">
+      <p class="text-uppercase tracking-wide mb-2 text-tracking-wide">Студия фотографии /
+        видеографии</p>
+      <h1 class="display-hero">Визуальные<br>рассказчики</h1>
+    </div>
+  </header>
+
+  <section class="container py-5 my-5 fade-up delay-2">
+    <h2 class="mb-5 fs-5 text-uppercase section-title">Направления</h2>
+
+    <div class="service-row row align-items-center">
+      <div class="col-1 service-number">01</div>
+      <div class="col-md-5">
+        <h3 class="mb-0 fs-1">Коммерческое видео</h3>
+      </div>
+      <div class="col-md-6">
+        <p class="text-muted mb-0 font-weight-light">Полный цикл производства для брендов. От концептуализации и
+          раскадровки до съёмок на кинокамерах (RED, Arri) и окончательной доставки.</p>
+      </div>
+    </div>
+
+    <div class="service-row row align-items-center">
+      <div class="col-1 service-number">02</div>
+      <div class="col-md-5">
+        <h3 class="mb-0 fs-1">Редакционная фотография</h3>
+      </div>
+      <div class="col-md-6">
+        <p class="text-muted mb-0 font-weight-light">Мода, lifestyle и портретная фотография. Работа с естественным и
+          студийным светом для создания вневременных, премиальных изображений.</p>
+      </div>
+    </div>
+
+    <div class="service-row row align-items-center border-bottom border-dark">
+      <div class="col-1 service-number">03</div>
+      <div class="col-md-5">
+        <h3 class="mb-0 fs-1">Постпродакшн</h3>
+      </div>
+      <div class="col-md-6">
+        <p class="text-muted mb-0 font-weight-light">Цветокоррекция в DaVinci Resolve, звуковой дизайн и точный монтаж,
+          определяющий ритм и эмоции финального произведения.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="container py-5  text-center">
+    <a href="mailto:hello@kasseta-yunosti.ru" class="btn-outline-custom">hello@kasseta-yunosti.ru</a>
+    <p class="mt-5 text-muted small text-uppercase text-tracking-sm">© 2026 Студия Кассета юности</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

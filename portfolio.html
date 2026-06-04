@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <title>Кассета юности | Портфолио</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+  <link href="css/main.css" rel="stylesheet" type="text/css">
+  <style>
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 4/5;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s;
+    }
+
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.5s;
+      text-align: center;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.05);
+      filter: blur(2px);
+    }
+
+    .project-card:hover .project-overlay {
+      opacity: 1;
+    }
+
+
+    .modal-backdrop.show {
+      opacity: 0.95;
+      background-color: #000;
+    }
+
+    .modal-content {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+    }
+
+    .modal-header {
+      border-bottom: none;
+      padding: 1rem 0;
+    }
+
+    .btn-close-white {
+      filter: invert(1) grayscale(100%) brightness(200%);
+      opacity: 0.8;
+    }
+
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+      padding: 2rem;
+    }
+
+    .gallery-item {
+      cursor: pointer;
+      overflow: hidden;
+      aspect-ratio: 1;
+      transition: transform 0.3s;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+
+    .person-item {
+      padding: 2rem;
+      border-bottom: 1px solid #222;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .person-item:last-child {
+      border-bottom: none;
+    }
+
+    .person-item:hover {
+      background-color: #0f0f0f;
+    }
+
+    .person-item h5 {
+      margin: 0;
+      color: #f4f4f5;
+      font-family: 'Syne', sans-serif;
+    }
+
+    .person-item p {
+      margin: 0.5rem 0 0 0;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+
+    .fancybox__backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: rgba(5, 5, 5, 0.95) !important;
+      opacity: 0.95 !important;
+      will-change: opacity;
+    }
+
+    .fancybox__container {
+      z-index: 9999 !important;
+    }
+
+    .fancybox__content {
+      z-index: 10000 !important;
+      position: relative;
+    }
+
+
+    .modal-backdrop {
+      z-index: 1040;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <nav class="navbar navbar-expand-lg fade-up">
+      <a class="navbar-brand brand-font text-white fs-4" href="index.html">Кассета юности</a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu">
+        <span class="navbar-toggler-icon navbar-toggler-icon-inverted"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-4">
+          <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+          <li class="nav-item"><a class="nav-link" href="workflow.html">Процесс</a></li>
+          <li class="nav-item"><a class="nav-link active" href="portfolio.html">Работы</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container-fluid px-md-5 mb-5 fade-up fade-up-delay">
+    <h1 class="display-3 mb-5 text-center">Архив</h1>
+
+    <div class="row g-4">
+
+      <div class="col-md-6 col-lg-4">
+        <div class="project-card" data-bs-toggle="modal" data-bs-target="#photoModal">
+          <img
+            src="images/v1.jpg"
+            alt="Editorial">
+          <div class="project-overlay">
+            <h3 class="fs-4">VOGUE Редакция</h3>
+            <p class="small text-uppercase tracking-wide text-uppercase-small">Фото-сет</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-6 col-lg-4">
+        <div class="project-card" data-bs-toggle="modal" data-bs-target="#videoModal">
+          <img
+            src="images/porshe.jpg"
+            alt="Commercial">
+          <div class="project-overlay">
+            <h3 class="fs-4">Кампания Porsche</h3>
+            <p class="small text-uppercase tracking-wide text-uppercase-small">Видеошот</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-6 col-lg-4">
+        <div class="project-card" data-bs-toggle="modal" data-bs-target="#portraitSelectModal">
+          <img
+            src="images/p1.jpg"
+            alt="Portrait">
+          <div class="project-overlay">
+            <h3 class="fs-4">Портреты</h3>
+            <p class="small text-uppercase tracking-wide text-uppercase-small">Фото-сет</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="photoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-wide">
+      <div class="modal-content">
+        <div class="modal-header d-flex justify-content-between align-items-center">
+          <h5 class="modal-title font-monospace text-uppercase text-muted small text-uppercase-small">VOGUE
+            Редакция</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <a href="images/v1.jpg"
+                data-fancybox="vogue-gallery" data-caption="VOGUE 01">
+                <img
+                  src="images/v1.jpg"
+                  alt="VOGUE 01">
+              </a>
+            </div>
+            <div class="gallery-item">
+              <a href="images/v2.jpg"
+                data-fancybox="vogue-gallery" data-caption="VOGUE 02">
+                <img
+                  src="images/v2.jpg"
+                  alt="VOGUE 02">
+              </a>
+            </div>
+            <div class="gallery-item">
+              <a href="images/v3.jpg"
+                data-fancybox="vogue-gallery" data-caption="VOGUE 03">
+                <img
+                  src="images/v3.jpg"
+                  alt="VOGUE 03">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="portraitSelectModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header d-flex justify-content-between align-items-center">
+          <h5 class="modal-title font-monospace text-uppercase text-muted small text-uppercase-small">Портреты -
+            Выбор модели</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div id="portraitsList" class="list-unstyled-custom">
+            <div class="person-item" data-bs-toggle="modal" data-bs-target="#portraitAnastasiahModal"
+              data-bs-dismiss="modal">
+              <h5>Анастасия</h5>
+              <p>01.06.2026</p>
+            </div>
+            <div class="person-item" data-bs-toggle="modal" data-bs-target="#portraitAndreyModal"
+              data-bs-dismiss="modal">
+              <h5>Андрей</h5>
+              <p>05.03.2026</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="portraitAnastasiahModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-wide">
+      <div class="modal-content">
+        <div class="modal-header d-flex justify-content-between align-items-center">
+          <h5 class="modal-title font-monospace text-uppercase text-muted small text-uppercase-small">Анастасия
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <a href="images/p1.jpg"
+                data-fancybox="anastasia-gallery" data-caption="Анастасия 01">
+                <img
+                  src="images/p1.jpg"
+                  alt="Анастасия 01">
+              </a>
+            </div>
+            <div class="gallery-item">
+              <a href="images/p2.jpg"
+                data-fancybox="anastasia-gallery" data-caption="Анастасия 02">
+                <img
+                  src="images/p2.jpg"
+                  alt="Анастасия 02">
+              </a>
+            </div>
+            <div class="gallery-item">
+              <a href="images/p3.jpg"
+                data-fancybox="anastasia-gallery" data-caption="Анастасия 03">
+                <img
+                  src="images/p3.jpg"
+                  alt="Анастасия 03">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="portraitAndreyModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-wide">
+      <div class="modal-content">
+        <div class="modal-header d-flex justify-content-between align-items-center">
+          <h5 class="modal-title font-monospace text-uppercase text-muted small text-uppercase-small">Андрей
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <a href="images/pm1.jpg"
+                data-fancybox="andrey-gallery" data-caption="Андрей 01">
+                <img
+                  src="images/pm1.jpg"
+                  alt="Андрей 01">
+              </a>
+            </div>
+            <div class="gallery-item">
+              <a href="images/pm2.jpg"  
+                data-fancybox="andrey-gallery" data-caption="Андрей 02">
+                <img
+                  src="images/pm2.jpg"
+                  alt="Андрей 02">
+              </a>
+            </div>
+            <div class="gallery-item">
+              <a href="images/pm3.jpg"
+                data-fancybox="andrey-gallery" data-caption="Андрей 03">
+                <img
+                  src="images/pm3.jpg"
+                  alt="Андрей 03">
+              </a>
+            </div>
+            <div class="gallery-item">
+              <a href="images/pm4.jpg"
+                data-fancybox="andrey-gallery" data-caption="Андрей 04">
+                <img
+                  src="images/pm4.jpg"
+                  alt="Андрей 04">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header d-flex justify-content-between align-items-center">
+          <h5 class="modal-title font-monospace text-uppercase text-muted small text-uppercase-small">Видеоплеер
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="ratio ratio-16x9">
+
+           <iframe width="720" height="405" src="https://rutube.ru/play/embed/4dedf5503d6e24510137a4f564b7b72b/" style="border: none;" allow="clipboard-write; autoplay" allowFullScreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="container py-5 border-top border-dark text-center">
+    <a href="mailto:hello@kasseta-yunosti.ru" class="btn-outline-custom">hello@kasseta-yunosti.ru</a>
+    <p class="mt-5 text-muted small text-uppercase text-tracking-sm">© 2026 Студия Кассета юности</p>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
+  <script>
+    Fancybox.bind('[data-fancybox]');
+  </script>
+</body>
+
+</html>
